@@ -35,8 +35,16 @@ func recursiveFact(a int) int {
 	return a * recursiveFact(a-1)
 }
 
-func multipleReturn(a int) (int,string,bool) {
-	return a,"helloWorld",true
+func multipleReturn(a int) (int, string, bool) {
+	return a, "helloWorld", true
+}
+
+func dynamicParameters(numbers ...int) int { //like args in .net
+	total := 0
+	for _, num := range numbers {
+		total += num
+	}
+	return total
 }
 
 func main() {
@@ -53,13 +61,22 @@ func main() {
 	result4 := recursiveFact(5)
 	fmt.Println("result4 =", result4)
 
-    multipleResult1,multipleResult2,multipleResult3 := multipleReturn(1)
-    fmt.Println("multipleResult1 =", multipleResult1)
-    fmt.Println("multipleResult2 =", multipleResult2)
-    fmt.Println("multipleResult3 =", multipleResult3)
+	multipleResult1, multipleResult2, multipleResult3 := multipleReturn(1)
+	fmt.Println("multipleResult1 =", multipleResult1)
+	fmt.Println("multipleResult2 =", multipleResult2)
+	fmt.Println("multipleResult3 =", multipleResult3)
 
-    _,multipleResult4,_ := multipleReturn(1)
-    fmt.Println("multipleResult4 =", multipleResult4)
-    
+	_, multipleResult4, _ := multipleReturn(1)
+	fmt.Println("multipleResult4 =", multipleResult4)
+
+	result5 := dynamicParameters(1, 2, 3)
+	fmt.Println("result5 =", result5)
+
+	result6 := dynamicParameters(1, 2, 3, 4)
+	fmt.Println("result6 =", result6)
+
+	nums := []int{5, 6, 7}
+	result7 := dynamicParameters(nums...)
+	fmt.Println("result7 =", result7)
 
 }
