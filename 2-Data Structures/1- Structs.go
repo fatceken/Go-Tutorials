@@ -14,6 +14,18 @@ func newPerson(name string) *person {
 	return &p
 }
 
+type animal struct {
+	name string
+}
+
+func renameAnimalByValue(a animal) {
+	a.name = "valteri"
+}
+
+func renameAnimalByRef(a *animal) {
+	a.name = "lewis"
+}
+
 func main() {
 
 	fmt.Println(person{"Bob", 20})
@@ -27,11 +39,22 @@ func main() {
 	fmt.Println(newPerson("Jon"))
 
 	s := person{name: "Sean", age: 50}
-	fmt.Println(s.name)	
+	fmt.Println(s.name)
 
 	sp := &s
 	fmt.Println(sp.age)
 
 	sp.age = 51
 	fmt.Println(sp.age)
+	fmt.Println(s.age)
+
+	//structs are value types in go
+
+	cat := animal{name: "Garfield"}
+	fmt.Println(cat)
+	renameAnimalByValue(cat)
+	fmt.Println(cat)
+	renameAnimalByRef(&cat)
+	fmt.Println(cat)
+
 }
